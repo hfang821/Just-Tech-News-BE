@@ -66,6 +66,7 @@ SET username = "Lernantino", email = "lernantino@gmail.com", password = "newPass
 WHERE id = 1;
 */ 
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id:req.params.id
         }
