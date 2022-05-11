@@ -1,3 +1,4 @@
+// only purpose is to start the server
 const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection');
