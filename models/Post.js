@@ -33,6 +33,7 @@ Post.init(
         }
     },
     {
+        //sequelize automatically assign the current_timestamp values
         sequelize,
         freezeTableName: true,
         underscored: true,

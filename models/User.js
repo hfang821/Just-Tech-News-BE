@@ -53,7 +53,7 @@ User.init(
         hooks: {
         //async because the bcrypt function is cpu intensive
         //set up beforeCreate lifecycle "hook" functionality
-         async beforeCreate(newUserData) { n
+         async beforeCreate(newUserData) { 
             //saltRound value of 10: "salt" random bits added to each password instance
             //async/await syntax
             newUserData.password = await bcrypt.hash(newUserData.password, 10);
