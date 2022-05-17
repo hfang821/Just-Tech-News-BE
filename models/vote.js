@@ -10,7 +10,7 @@ Vote.init(
         primaryKey: true,
         autoIncrement: true
     },
-
+// comment
 
     user_id: {
         type: DataTypes.INTEGER,
