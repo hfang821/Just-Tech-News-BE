@@ -10,7 +10,6 @@ Vote.init(
         primaryKey: true,
         autoIncrement: true
     },
-    //need to go here
 
 
     user_id: {
