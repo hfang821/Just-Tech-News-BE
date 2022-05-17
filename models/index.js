@@ -1,6 +1,6 @@
 const User = require('./User');
 const Post = require('./Post');
-const Vote = require('./Vote');
+const Vote = require('./vote');
 const Comment = require('./Comment');
 
 //One-too-many relationships: a user can have many posts
