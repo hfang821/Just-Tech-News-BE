@@ -98,37 +98,18 @@ router.post('/',(req, res) =>{
 // PUT  /api/posts/upvote
 // need to before the /:id put route or express will think the upvote is a parameter of the /:id
 router.put('/upvote', (req, res) => {
-    //custom static method created in models/Post.js
-    Post.upvote(req.body, {Vote})
+    //making sure the session exists (upvote won't work if the user is not logged in, session does not exist)
+    if(req.session){
+        //pass session id along with all destructured properties on req.body
+        //... (three dots in Javascript) is called the Spread Syntax or Spread Operator. 
+        //This allows an iterable such as an array expression or string to be expanded or an object expression to be expanded wherever placed.
+        Post.upvote({...req.body, user_id: req.session.user_id},{Vote, Comment, User})
         .then(updatedPostData => res.json(updatedPostData))
         .catch(err => {
             console.log(err);
-            res.status(400).json(err);
+            res.status(500).json(err);
         });
-    // Vote.create({
-    //     user_id: req.body.user_id,
-    //     post_id: req.body.post_id
-    //   })
-    //     .then(() => {
-    //         //then find the post we just voted on
-    //         return Post.findOne({
-    //             where: {
-    //                 id: req.body.post_id
-    //             },
-    //             attributes: ['id', 'post_url', 'title', 'created_at',
-    //                     [
-    //                         //literal allows us to run regular SQL queries from within sequelize
-    //                         sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
-    //                         'vote_count'
-    //                     ]
-    //                 ]
-    //         })
-    //         .then(dbPostData => res.json(dbPostData))
-    //         .catch(err => {
-    //             console.log(err);
-    //             res.status(400).json(err);
-    //         });
-    //     });      
+    }
 }); 
 
 
