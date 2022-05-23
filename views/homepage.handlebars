@@ -1,20 +1,8 @@
 <ol class="post-list">
   {{! the each helper function will begin the loop and be repeated for every item in posts }}
-    {{#each posts as |post|}}
+  {{#each posts as |post|}}
     <li>
-      <article class="post">
-        <div class="title">
-          <a href="{{post.post_url}}" target="_blank">{{title}}</a>
-          <span>({{post.post_url}})</span>
-        </div>
-        <div class="meta">
-          {{! two curly braces converts HTML characters into strings. }}
-          {{post.vote_count}} point(s) by {{post.user.username}} on
-          {{post.created_at}}
-          |
-          <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
-        </div>
-      </article>
+      {{>post-info post}}
     </li>
   {{/each}}
 </ol>
